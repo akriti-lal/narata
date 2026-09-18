@@ -1,0 +1,163 @@
+/* story.css — the cinematic chapter-reveal look */
+
+:root {
+  --ink: #0D0B08;
+  --paper: #171310;
+  --parchment: #EDE4D3;
+  --brass: #C89B3C;
+  --ember: #8B3A2E;
+  --dim: #8A8072;
+
+  --display: 'Fraunces', serif;
+  --body: 'Manrope', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: var(--body);
+}
+
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px clamp(20px, 5vw, 60px);
+  background: linear-gradient(to bottom, var(--ink) 40%, transparent);
+}
+
+.wordmark {
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--brass);
+  text-decoration: none;
+}
+
+.autoscroll-btn {
+  background: rgba(237,228,211,0.06);
+  border: 1px solid rgba(237,228,211,0.16);
+  color: var(--parchment);
+  font-family: var(--body);
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.autoscroll-btn.on {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+.story-title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  font-size: clamp(28px, 5vw, 46px);
+  padding: 34vh 24px 18vh;
+  margin: 0;
+  color: var(--parchment);
+}
+
+.chapter-nav {
+  position: fixed;
+  right: clamp(14px, 3vw, 32px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chapter-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(237,228,211,0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.chapter-dot.active {
+  background: var(--brass);
+  transform: scale(1.4);
+}
+
+.chapters {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 40vh;
+}
+
+.chapter {
+  padding: 22vh 0;
+  opacity: 0.28;
+  filter: blur(0.5px);
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+.chapter.active {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.chapter-eyebrow {
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--brass);
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+
+.chapter-heading {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(24px, 4vw, 34px);
+  margin: 0 0 28px;
+  line-height: 1.2;
+}
+
+.chapter-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--parchment);
+  white-space: pre-wrap;
+}
+
+.chapter-body .typed-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--brass);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.end-note {
+  text-align: center;
+  padding: 10vh 24px 20vh;
+  color: var(--dim);
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter { transition: none; opacity: 1; filter: none; }
+}

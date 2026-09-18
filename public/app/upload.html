@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Narata — Upload your paper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="wordmark" href="../landing/index.html">Narata</a>
+  </header>
+
+  <main class="stage">
+    <h1 class="page-title">Bring a paper.</h1>
+    <p class="page-sub">PDF only, any length. We'll read it before we retell it.</p>
+
+    <!-- STEP 1: choose a file -->
+    <label class="dropzone" id="dropzone" for="file-input">
+      <input type="file" id="file-input" accept="application/pdf" hidden />
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 16V4M12 4L7 9M12 4l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="drop-text" id="drop-text">Please choose a file</span>
+      <span class="drop-hint">or drag a PDF here</span>
+    </label>
+
+    <!-- STEP 2: read the PDF -->
+    <button class="btn btn-primary" id="read-btn" disabled>Read PDF</button>
+    <p class="status" id="status"></p>
+
+    <!-- STEP 3: extracted text preview -->
+    <section class="extract" id="extract" hidden>
+      <h2 class="extract-title">Narata extracted this text from your PDF</h2>
+      <div class="extract-box" id="extract-text"></div>
+      <button class="btn btn-accent" id="generate-btn">Generate research story</button>
+    </section>
+  </main>
+
+  <script src="upload.js"></script>
+</body>
+</html>
